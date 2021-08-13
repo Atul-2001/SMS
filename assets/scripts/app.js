@@ -11,13 +11,16 @@ if (courseDetailForm) {
 
         const jsonObj = JSON.stringify(getFormDataInJson($('#courseDetail')));
         if (jsonObj) {
-            
-            const putReqStr = createGET_BY_KEYRequest(token, dbName, "Course", jsonObj, true, true);
-            jQuery.ajaxSetup({ async: false });
-            let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, getEndPoint);
-            jQuery.ajaxSetup({ async: true });
-            alert(JSON.stringify(resultObj));
-            courseDetailForm.reset();
+            try {
+                const reqStr = createGET_BY_KEYRequest(token, dbName, "Course", jsonObj, true, true);
+                jQuery.ajaxSetup({ async: false });
+                let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, getEndPoint);
+                jQuery.ajaxSetup({ async: true });
+                alert(JSON.stringify(resultObj));
+                courseDetailForm.reset();
+            } catch (e) {
+                alert(e);
+            }
         } else {
             alert("json string not availabe");
         }
@@ -26,14 +29,19 @@ if (courseDetailForm) {
 
 function deleteCourse() {
     const reqId = getFormDataInJson($('#courseDetail')).courseID;
-     // No method to delete record based on custom primary key
+    // No method to delete record based on custom primary key
     if (reqId) {
-        const putReqStr = createREMOVERecordRequest(token, dbName, 'Course', reqId);
-        jQuery.ajaxSetup({ async: false });
-        let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-        jQuery.ajaxSetup({ async: true });
-        alert(JSON.stringify(resultObj));
-        studentDetailForm.reset();
+        try {
+            const reqStr = createREMOVERecordRequest(token, dbName, 'Course', reqId);
+            alert(JSON.stringify(reqStr));
+            jQuery.ajaxSetup({ async: false });
+            let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+            jQuery.ajaxSetup({ async: true });
+            alert(JSON.stringify(resultObj));
+            studentDetailForm.reset();
+        } catch (e) {
+            alert(e);
+        }
     } else {
         alert("json string not availabe");
     }
@@ -46,12 +54,16 @@ if (studentDetailForm) {
 
         const jsonObj = JSON.stringify(getFormDataInJson($('#studentDetail')));
         if (jsonObj) {
-            const putReqStr = createGET_BY_KEYRequest(token, dbName, "Student", jsonObj, true, true);
-            jQuery.ajaxSetup({ async: false });
-            let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, getEndPoint);
-            jQuery.ajaxSetup({ async: true });
-            alert(JSON.stringify(resultObj));
-            studentDetailForm.reset();
+            try {
+                const reqStr = createGET_BY_KEYRequest(token, dbName, "Student", jsonObj, true, true);
+                jQuery.ajaxSetup({ async: false });
+                let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, getEndPoint);
+                jQuery.ajaxSetup({ async: true });
+                alert(JSON.stringify(resultObj));
+                studentDetailForm.reset();
+            } catch (e) {
+                alert(e);
+            }
         } else {
             alert("json string not availabe");
         }
@@ -60,14 +72,19 @@ if (studentDetailForm) {
 
 function deleteStudent() {
     const reqId = getFormDataInJson($('#studentDetail')).rollNo;
-     // No method to delete record based on custom primary key
+    // No method to delete record based on custom primary key
     if (reqId) {
-        const putReqStr = createREMOVERecordRequest(token, dbName, 'Student', reqId);
-        jQuery.ajaxSetup({ async: false });
-        let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-        jQuery.ajaxSetup({ async: true });
-        alert(JSON.stringify(resultObj));
-        studentDetailForm.reset();
+        try {
+            const reqStr = createREMOVERecordRequest(token, dbName, 'Student', reqId);
+            alert(JSON.stringify(reqStr));
+            jQuery.ajaxSetup({ async: false });
+            let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+            jQuery.ajaxSetup({ async: true });
+            alert(JSON.stringify(resultObj));
+            studentDetailForm.reset();
+        } catch (e) {
+            alert(e);
+        }
     } else {
         alert("json string not availabe");
     }
@@ -80,12 +97,16 @@ if (addStudentForm) {
 
         const jsonObj = JSON.stringify(getFormDataInJson($('#addStudent')));
         if (jsonObj) {
-            const putReqStr = createPUTRequest(token, jsonObj, dbName, "Student");
-            jQuery.ajaxSetup({ async: false });
-            let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-            jQuery.ajaxSetup({ async: true });
-            alert(JSON.stringify(resultObj));
-            addStudentForm.reset();
+            try {
+                const reqStr = createPUTRequest(token, jsonObj, dbName, "Student");
+                jQuery.ajaxSetup({ async: false });
+                let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+                jQuery.ajaxSetup({ async: true });
+                alert(JSON.stringify(resultObj));
+                addStudentForm.reset();
+            } catch (e) {
+                alert(e);
+            }
         } else {
             alert("json string not availabe");
         }
@@ -96,12 +117,17 @@ function updateStudent() {
     const jsonObj = JSON.stringify(getFormDataInJson($('#addStudent')));
     let reqId = 1; // No method to update record based on custom primary key
     if (jsonObj) {
-        const putReqStr = createUPDATERecordRequest(token, jsonObj, dbName, "Student", reqId);
-        jQuery.ajaxSetup({ async: false });
-        let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-        jQuery.ajaxSetup({ async: true });
-        alert(JSON.stringify(resultObj));
-        addCourseForm.reset();
+        try {
+            const reqStr = createUPDATERecordRequest(token, jsonObj, dbName, "Student", reqId);
+            alert(JSON.stringify(reqStr));
+            jQuery.ajaxSetup({ async: false });
+            let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+            jQuery.ajaxSetup({ async: true });
+            alert(JSON.stringify(resultObj));
+            addCourseForm.reset();
+        } catch (e) {
+            alert(e);
+        }
     } else {
         alert("json string not availabe");
     }
@@ -114,12 +140,16 @@ if (addCourseForm) {
 
         const jsonObj = JSON.stringify(getFormDataInJson($('#addCourse')));
         if (jsonObj) {
-            const putReqStr = createPUTRequest(token, jsonObj, dbName, "Course");
-            jQuery.ajaxSetup({ async: false });
-            let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-            jQuery.ajaxSetup({ async: true });
-            alert(JSON.stringify(resultObj));
-            addCourseForm.reset();
+            try {
+                const reqStr = createPUTRequest(token, jsonObj, dbName, "Course");
+                jQuery.ajaxSetup({ async: false });
+                let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+                jQuery.ajaxSetup({ async: true });
+                alert(JSON.stringify(resultObj));
+                addCourseForm.reset();
+            } catch (e) {
+                alert(e);
+            }
         } else {
             alert("json string not availabe");
         }
@@ -130,12 +160,17 @@ function updateCourse(params) {
     const jsonObj = JSON.stringify(getFormDataInJson($('#addCourse')));
     let reqId = 1; // No method to update record based on custom primary key
     if (jsonObj) {
-        const putReqStr = createUPDATERecordRequest(token, jsonObj, dbName, "Course", reqId);
-        jQuery.ajaxSetup({ async: false });
-        let resultObj = executeCommandAtGivenBaseUrl(putReqStr, baseUri, putEndPoint);
-        jQuery.ajaxSetup({ async: true });
-        alert(JSON.stringify(resultObj));
-        addCourseForm.reset();
+        try {
+            const reqStr = createUPDATERecordRequest(token, jsonObj, dbName, "Course", reqId);
+            alert(JSON.stringify(reqStr));
+            jQuery.ajaxSetup({ async: false });
+            let resultObj = executeCommandAtGivenBaseUrl(reqStr, baseUri, putEndPoint);
+            jQuery.ajaxSetup({ async: true });
+            alert(JSON.stringify(resultObj));
+            addCourseForm.reset();
+        } catch (e) {
+            alert(e);
+        }
     } else {
         alert("json string not availabe");
     }
