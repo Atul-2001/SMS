@@ -17,4 +17,4 @@
 
 
 ### Release history
- - v1.0 13 Aug 2021
+ - v1.0 (13 Aug 2021)
